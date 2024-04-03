@@ -5285,7 +5285,7 @@ GameObject:
   - component: {fileID: 918394334}
   - component: {fileID: 918394333}
   - component: {fileID: 918394332}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Foundation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8065,6 +8065,37 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1647978284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1647978285}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1647978285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647978284}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.82, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2032853618}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1690569262
 Mesh:
   m_ObjectHideFlags: 0
@@ -8621,7 +8652,7 @@ GameObject:
   - component: {fileID: 1796686789}
   - component: {fileID: 1796686788}
   - component: {fileID: 1796686787}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: '2F Foundation '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13493,7 +13524,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 794179271}
-  m_VersionIndex: 5884
+  m_VersionIndex: 5887
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -15719,7 +15750,7 @@ CharacterController:
   m_Height: 3.8
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.7
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -15732,12 +15763,13 @@ Transform:
   m_GameObject: {fileID: 2032853616}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16, y: 4, z: 0}
+  m_LocalPosition: {x: 12, y: 4, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2143693060}
   - {fileID: 696282068}
+  - {fileID: 1647978285}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2032853619
@@ -15754,6 +15786,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2032853617}
   speed: 12
+  gravity: -9.81
+  groundCheck: {fileID: 1647978285}
+  groundDistance: 0.4
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &2143693059
 GameObject:
   m_ObjectHideFlags: 0
