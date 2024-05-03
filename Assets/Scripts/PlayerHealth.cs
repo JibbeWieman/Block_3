@@ -47,12 +47,20 @@ public class PlayerHealth : MonoBehaviour
     {
         currentStrikes++;
 
-        if (currentStrikes >= maxStrikes)
+        LifeCount lifeCountScript = FindObjectOfType<LifeCount>();
+
+        if (currentStrikes >= maxStrikes || (lifeCountScript != null && lifeCountScript.LivesRemaining() == 0))
         {
             player.GetComponent<PlayerMovement>().enabled = false;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             gameOverPanel.SetActive(true);
+        }
+
+        
+        if (lifeCountScript != null)
+        {
+            lifeCountScript.LoseLife();
         }
     }
 }
