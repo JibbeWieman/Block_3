@@ -371,6 +371,7 @@
 "Assets/Scripts/BehaviorTree 1/BehaviorTree/Sequence.cs"
 "Assets/Scripts/BehaviorTree 1/BehaviorTree/Tree.cs"
 "Assets/Scripts/BehaviorTree 1/GuardAI/CheckEnemyInFOVRange.cs"
+"Assets/Scripts/BehaviorTree 1/GuardAI/Conditional.cs"
 "Assets/Scripts/BehaviorTree 1/GuardAI/GuardBT.cs"
 "Assets/Scripts/BehaviorTree 1/GuardAI/TaskGoToTarget.cs"
 "Assets/Scripts/BehaviorTree 1/GuardAI/TaskPatrol.cs"
@@ -405,8 +406,10 @@
 "Assets/Scripts/Part3 and 4/Waypoint.cs"
 "Assets/Scripts/PlayerHealth.cs"
 "Assets/Scripts/PlayerMovement.cs"
+"Assets/Scripts/Rotator.cs"
 "Assets/Scripts/Simple Patrol System Mina/Patrol.cs"
 "Assets/Scripts/Simple Patrol System Mina/PatrolCoroutines.cs"
+"Assets/Scripts/Sneak.cs"
 "Assets/Scripts/TakingPictures.cs"
 -langversion:9.0
 

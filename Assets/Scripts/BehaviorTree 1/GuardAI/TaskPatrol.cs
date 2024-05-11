@@ -15,7 +15,7 @@ public class TaskPatrol : Node
     private float _waitCounter = 0f;
     private bool _waiting = false;
 
-    private int[] _waitWaypoints = { 1, 2, 19, 32, 43, 52, 64 };
+    private int[] _waitWaypoints = { 2, 19, 32, 43, 52, 64 };
 
     private float _minSpeed = 4f;
     private float _maxSpeed = 7f;

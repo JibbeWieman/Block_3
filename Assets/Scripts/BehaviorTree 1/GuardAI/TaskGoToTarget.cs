@@ -9,6 +9,10 @@ public class TaskGoToTarget : Node
     private Transform _transform;
     private Transform _target;
 
+    // Threshold distance to stop following the player
+    private float _distanceThreshold = 20f;
+    private bool _isFollowing = false;
+
     public TaskGoToTarget(Transform transform)
     {
         _transform = transform;
@@ -17,6 +21,9 @@ public class TaskGoToTarget : Node
     public override NodeState Evaluate()
     {
         _target = (Transform)GetData("target");
+
+        // Debug log to check if the target is being received correctly
+        Debug.Log("Target received: " + _target);
 
         /*if (target == null)
         {
@@ -52,9 +59,12 @@ public class TaskGoToTarget : Node
         state = NodeState.RUNNING;
         return state;*/
 
+
+
+
         if (_target != null)
         {
-            float distanceThreshold = 10f; 
+            /*float distanceThreshold = 10f;
 
             float distanceToTarget = Vector3.Distance(_transform.position, _target.position);
 
@@ -66,18 +76,51 @@ public class TaskGoToTarget : Node
             }
 
             // Move towards the target
-            float speed = GuardBT.speed; 
+            float speed = GuardBT.speed;
             float step = speed * Time.deltaTime;
             _transform.position = Vector3.MoveTowards(_transform.position, _target.position, step);
 
             // Rotate towards the target
             Vector3 direction = (_target.position - _transform.position).normalized;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
-            _transform.rotation = Quaternion.RotateTowards(_transform.rotation, targetRotation, step * 100); 
+            _transform.rotation = Quaternion.RotateTowards(_transform.rotation, targetRotation, step * 100);
 
-            return NodeState.RUNNING;
+            Debug.Log("Node state: " + state);*/
+            
+            float distanceToTarget = Vector3.Distance(_transform.position, _target.position);
+
+            if (distanceToTarget <= _distanceThreshold)
+            {
+
+              // Move towards the received target (player)
+                float speed = GuardBT.speed;
+                float step = speed * Time.deltaTime;
+                _transform.position = Vector3.MoveTowards(_transform.position, _target.position, step);
+
+                // Rotate towards the target
+                Vector3 direction = (_target.position - _transform.position).normalized;
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                _transform.rotation = Quaternion.RotateTowards(_transform.rotation, targetRotation, step * 100);
+
+                _isFollowing = true;
+                return NodeState.RUNNING;
+            }
+            else
+            {
+                // Player moved too far away, stop following
+                _isFollowing = false;
+                return NodeState.FAILURE;
+            }
         }
 
+        // If not following, return failure
+        _isFollowing = false;
         return NodeState.FAILURE;
+    }
+
+    // Method to check if the AI is currently following the player
+    public bool IsFollowingPlayer()
+    {
+        return _isFollowing;
     }
 }

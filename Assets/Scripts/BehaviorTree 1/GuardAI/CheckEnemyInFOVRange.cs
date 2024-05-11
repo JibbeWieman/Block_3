@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -67,7 +67,7 @@ public class CheckEnemyInFOVRange : Node
                 }
             }*/
 
-            state = NodeState.FAILURE;
+            /*state = NodeState.FAILURE;
             return state;
         }
 
@@ -76,3 +76,4 @@ public class CheckEnemyInFOVRange : Node
     }
 
 }
+*/

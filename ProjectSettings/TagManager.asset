@@ -7,6 +7,7 @@ TagManager:
   - door
   - Reach
   - PatrolPoint
+  - InteractedObject
   layers:
   - Default
   - TransparentFX

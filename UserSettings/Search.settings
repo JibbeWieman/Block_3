@@ -8,6 +8,11 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
+	"picker_window_position_offset.768FEAAC" = "719.3334;214.6667;320;550"
+	"picker_search_text.768FEAAC" = "scene"
+	"last_search.768FEAAC" = "scene"
+	"OpenInspectorPreview.768FEAAC" = "0"
+	"currentGroup.768FEAAC" = "all"
 }
 providers = {
 	packages = {

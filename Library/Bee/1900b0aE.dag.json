@@ -26299,7 +26299,7 @@
       "DisplayName": "Writing Assembly-CSharp.rsp",
       "ActionType": "WriteFile",
       "PayloadOffset": 1993852,
-      "PayloadLength": 35647,
+      "PayloadLength": 35759,
       "PayloadDebugContentSnippet": "-target:library\r\n-out:\"Library",
       "Inputs": [],
       "Outputs": [
@@ -26311,7 +26311,7 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.rsp2",
       "DisplayName": "Writing Assembly-CSharp.rsp2",
       "ActionType": "WriteFile",
-      "PayloadOffset": 2029586,
+      "PayloadOffset": 2029698,
       "PayloadLength": 0,
       "PayloadDebugContentSnippet": "",
       "Inputs": [],
@@ -26574,6 +26574,7 @@
         "Assets/Scripts/BehaviorTree 1/BehaviorTree/Sequence.cs",
         "Assets/Scripts/BehaviorTree 1/BehaviorTree/Tree.cs",
         "Assets/Scripts/BehaviorTree 1/GuardAI/CheckEnemyInFOVRange.cs",
+        "Assets/Scripts/BehaviorTree 1/GuardAI/Conditional.cs",
         "Assets/Scripts/BehaviorTree 1/GuardAI/GuardBT.cs",
         "Assets/Scripts/BehaviorTree 1/GuardAI/TaskGoToTarget.cs",
         "Assets/Scripts/BehaviorTree 1/GuardAI/TaskPatrol.cs",
@@ -26608,8 +26609,10 @@
         "Assets/Scripts/Part3 and 4/Waypoint.cs",
         "Assets/Scripts/PlayerHealth.cs",
         "Assets/Scripts/PlayerMovement.cs",
+        "Assets/Scripts/Rotator.cs",
         "Assets/Scripts/Simple Patrol System Mina/Patrol.cs",
         "Assets/Scripts/Simple Patrol System Mina/PatrolCoroutines.cs",
+        "Assets/Scripts/Sneak.cs",
         "Assets/Scripts/TakingPictures.cs",
         "C:/Program Files/Unity/Hub/Editor/2022.3.19f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll",
         "C:/Program Files/Unity/Hub/Editor/2022.3.19f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll",
@@ -26893,7 +26896,7 @@
       "Annotation": "WriteText Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll.mvfrm.rsp",
       "DisplayName": "Writing Assembly-CSharp.dll.mvfrm.rsp",
       "ActionType": "WriteFile",
-      "PayloadOffset": 2029682,
+      "PayloadOffset": 2029794,
       "PayloadLength": 10082,
       "PayloadDebugContentSnippet": "Library\\Bee\\artifacts\\mvdfrm\\U",
       "Inputs": [],
@@ -28353,7 +28356,7 @@
     {
       "Annotation": "BuildPlayerDataGenerator Library/BuildPlayerData/Editor/TypeDb-All.json",
       "DisplayName": "BuildPlayerDataGenerator TypeDb-All",
-      "Action": "\"C:/Program Files/Unity/Hub/Editor/2022.3.19f1/Editor/Data\\Tools\\netcorerun\\netcorerun.exe\" \"C:/Program Files/Unity/Hub/Editor/2022.3.19f1/Editor/Data/Tools/BuildPlayerDataGenerator/BuildPlayerDataGenerator.exe\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\ScriptAssemblies\\Assembly-CSharp.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\ScriptAssemblies\\Unity.AI.Navigation.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\ScriptAssemblies\\Unity.ProBuilder.Csg.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\ScriptAssemblies\\Unity.ProBuilder.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\ScriptAssemblies\\Unity.ProBuilder.KdTree.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\ScriptAssemblies\\Unity.ProBuilder.Poly2Tri.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\ScriptAssemblies\\Unity.ProBuilder.Stl.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\ScriptAssemblies\\Unity.TextMeshPro.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\ScriptAssemblies\\Unity.Timeline.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\ScriptAssemblies\\Unity.VisualScripting.Core.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\ScriptAssemblies\\Unity.VisualScripting.Flow.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\ScriptAssemblies\\Unity.VisualScripting.State.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\ScriptAssemblies\\UnityEngine.TestRunner.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\ScriptAssemblies\\UnityEngine.UI.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6\\net35\\unity-custom\\nunit.framework.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\PackageCache\\com.unity.testtools.codecoverage@1.2.5\\lib\\ReportGenerator\\ReportGeneratorMerged.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\PackageCache\\com.unity.visualscripting@1.9.1\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\\Unity.VisualScripting.Antlr3.Runtime.dll\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.19f1\\Editor\\Data\\Managed\\UnityEngine\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.19f1\\Editor\\Data\\NetStandard\\compat\\2.1.0\\shims\\netfx\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.19f1\\Editor\\Data\\NetStandard\\compat\\2.1.0\\shims\\netstandard\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.19f1\\Editor\\Data\\NetStandard\\Extensions\\2.0.0\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.19f1\\Editor\\Data\\NetStandard\\ref\\2.1.0\" -s=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\ScriptAssemblies\" -s=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6\\net35\\unity-custom\" -s=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\PackageCache\\com.unity.testtools.codecoverage@1.2.5\\lib\\ReportGenerator\" -s=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (4)\\Library\\PackageCache\\com.unity.visualscripting@1.9.1\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\" -o=\"Library/BuildPlayerData/Editor\" -rn=\"\" -tn=\"TypeDb-All.json\"",
+      "Action": "\"C:/Program Files/Unity/Hub/Editor/2022.3.19f1/Editor/Data\\Tools\\netcorerun\\netcorerun.exe\" \"C:/Program Files/Unity/Hub/Editor/2022.3.19f1/Editor/Data/Tools/BuildPlayerDataGenerator/BuildPlayerDataGenerator.exe\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\ScriptAssemblies\\Assembly-CSharp.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\ScriptAssemblies\\Unity.AI.Navigation.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\ScriptAssemblies\\Unity.ProBuilder.Csg.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\ScriptAssemblies\\Unity.ProBuilder.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\ScriptAssemblies\\Unity.ProBuilder.KdTree.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\ScriptAssemblies\\Unity.ProBuilder.Poly2Tri.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\ScriptAssemblies\\Unity.ProBuilder.Stl.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\ScriptAssemblies\\Unity.TextMeshPro.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\ScriptAssemblies\\Unity.Timeline.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\ScriptAssemblies\\Unity.VisualScripting.Core.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\ScriptAssemblies\\Unity.VisualScripting.Flow.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\ScriptAssemblies\\Unity.VisualScripting.State.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\ScriptAssemblies\\UnityEngine.TestRunner.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\ScriptAssemblies\\UnityEngine.UI.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6\\net35\\unity-custom\\nunit.framework.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\PackageCache\\com.unity.testtools.codecoverage@1.2.5\\lib\\ReportGenerator\\ReportGeneratorMerged.dll\" -a=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\PackageCache\\com.unity.visualscripting@1.9.1\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\\Unity.VisualScripting.Antlr3.Runtime.dll\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.19f1\\Editor\\Data\\Managed\\UnityEngine\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.19f1\\Editor\\Data\\NetStandard\\compat\\2.1.0\\shims\\netfx\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.19f1\\Editor\\Data\\NetStandard\\compat\\2.1.0\\shims\\netstandard\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.19f1\\Editor\\Data\\NetStandard\\Extensions\\2.0.0\" -s=\"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.19f1\\Editor\\Data\\NetStandard\\ref\\2.1.0\" -s=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\ScriptAssemblies\" -s=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\PackageCache\\com.unity.ext.nunit@1.0.6\\net35\\unity-custom\" -s=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\PackageCache\\com.unity.testtools.codecoverage@1.2.5\\lib\\ReportGenerator\" -s=\"C:\\Users\\tinti\\Desktop\\hanze projects\\unity\\My project (1)\\Library\\PackageCache\\com.unity.visualscripting@1.9.1\\Runtime\\VisualScripting.Flow\\Dependencies\\NCalc\" -o=\"Library/BuildPlayerData/Editor\" -rn=\"\" -tn=\"TypeDb-All.json\"",
       "Inputs": [
         "C:/Program Files/Unity/Hub/Editor/2022.3.19f1/Editor/Data/Tools/netcorerun/netcorerun.exe",
         "C:/Program Files/Unity/Hub/Editor/2022.3.19f1/Editor/Data/Tools/BuildPlayerDataGenerator/BuildPlayerDataGenerator.exe",
@@ -28687,6 +28690,6 @@
   "SharedResources": [],
   "Scanners": [],
   "Identifier": "Library/Bee/1900b0aE.dag.json",
-  "PayloadsFile": "C:/Users/tinti/Desktop/hanze projects/unity/My project (4)/Library/Bee/1900b0aE.dag.payloads",
+  "PayloadsFile": "C:/Users/tinti/Desktop/hanze projects/unity/My project (1)/Library/Bee/1900b0aE.dag.payloads",
   "RelativePathToRoot": "../.."
 }
