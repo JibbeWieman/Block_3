@@ -4,10 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - door
-  - Reach
   - PatrolPoint
   - InteractedObject
+  - Reach
+  - door
+  - block
+  - Landlord
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
+  - 
   - 
   - 
   - 

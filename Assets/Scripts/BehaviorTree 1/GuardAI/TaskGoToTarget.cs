@@ -23,7 +23,7 @@ public class TaskGoToTarget : Node
         _target = (Transform)GetData("target");
 
         // Debug log to check if the target is being received correctly
-        Debug.Log("Target received: " + _target);
+        //Debug.Log("Target received: " + _target);
 
         /*if (target == null)
         {
@@ -92,7 +92,7 @@ public class TaskGoToTarget : Node
             if (distanceToTarget <= _distanceThreshold)
             {
 
-              // Move towards the received target (player)
+                // Move towards the received target (player)
                 float speed = GuardBT.speed;
                 float step = speed * Time.deltaTime;
                 _transform.position = Vector3.MoveTowards(_transform.position, _target.position, step);

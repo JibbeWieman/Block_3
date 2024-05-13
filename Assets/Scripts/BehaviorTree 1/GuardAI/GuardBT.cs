@@ -110,12 +110,12 @@ public class GuardBT : BehaviorTree.Tree
             new Sequence(new List<Node>
             {
                 new Conditional(() => playerInteracted), // Check if player interacted
-                new TaskGoToTarget(transform),
+                new TaskGoToTarget(transform), 
             }),
             // Continue patrolling if no interaction occurred
             new TaskPatrol(transform, waypoints),
         });
-
+        
         return root;
     }
 

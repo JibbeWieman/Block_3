@@ -1,5 +1,5 @@
 
-=== Fri Apr  5 17:53:58 2024
+=== Sat May 11 14:46:07 2024
 
 Packages were changed.
 Update Mode: mergeDefaultDependencies
@@ -37,6 +37,6 @@ The following packages were added:
   com.unity.modules.wind@1.0.0
   com.unity.modules.xr@1.0.0
 The following packages were updated:
-  com.unity.collab-proxy from version 1.13.5 to 2.2.0
-  com.unity.timeline from version 1.6.2 to 1.7.6
-  com.unity.visualscripting from version 1.7.6 to 1.9.1
+  com.unity.collab-proxy from version 1.13.5 to 2.0.5
+  com.unity.timeline from version 1.6.2 to 1.7.5
+  com.unity.visualscripting from version 1.7.6 to 1.8.0

@@ -9,7 +9,7 @@ public class annoyAI : MonoBehaviour
     {
         for(int i = 0; i < 180; i++)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + 0.009f);
+           // transform.position = new Vector3(transform.position.x, transform.position.y + 0.000009f);
         }
 
         if(transform.position.y > 300)
