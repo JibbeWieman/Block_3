@@ -66,13 +66,17 @@ public class Interact : MonoBehaviour
     [SerializeField] int AmountCanInteract = 1;
     [SerializeField] int AgroDistance;
     [SerializeField] bool CameraObject = false;
+    [SerializeField] string objectString;
 
     // Event delegate for interaction event
     public delegate void InteractionEventHandler(Transform target);
     public static event InteractionEventHandler OnInteract;
 
-    public delegate void InteractEventHandler(int Count);
-    public static event InteractEventHandler OnInteractCount;
+    public delegate void InteractAnoyEventHandler(int Count);
+    public static event InteractAnoyEventHandler OnInteractCountAnoy;
+
+    public delegate void InteractCameraEventHandler(int Count);
+    public static event InteractCameraEventHandler OnInteractCountCamera;
 
     void Start()
     {
@@ -98,16 +102,24 @@ public class Interact : MonoBehaviour
 
     void OnGUI()
     {
+        GUIStyle headStyle = new GUIStyle();
+        headStyle.fontSize = 30;
+
         if (targetTimePause < targetTimePauseStart)
         {
             int targetTimePauseInt = (int)targetTimePause;
             var targetTimePauseString = targetTimePauseInt.ToString();
-            GUI.Label(new Rect(50, 50, 400, 200), "Time Frozen " + targetTimePauseString);
+            GUI.Label(new Rect(50, 50, 400, 200), "Time Frozen " + targetTimePauseString, headStyle);
         }
 
         if (inReach == true)
         {
-            GUI.Box(new Rect(Screen.width / 3, (Screen.height /3)*2, Screen.width/3, Screen.height/3), "Press | E | to interact");
+            GUI.Box(new Rect(Screen.width / 2, (Screen.height /3)*2, Screen.width/3, Screen.height/2), "Press | E | to interact", headStyle);
+        }
+
+        if(targetTimePause/2 > 5)
+        {
+            GUI.Label(new Rect(Screen.width / 2, 300, 400, 200), objectString, headStyle);
         }
     }
 
@@ -125,8 +137,16 @@ public class Interact : MonoBehaviour
 
                 // Notify AI that interaction occurred with the player's transform
                 OnInteract?.Invoke(playerTransform);
-                OnInteractCount?.Invoke(1);
                 UIAnnoyCounter.CountSwitch = true;
+
+                if(CameraObject == false)
+                {
+                    OnInteractCountAnoy?.Invoke(1);
+                }
+                else
+                {
+                    OnInteractCountCamera?.Invoke(1);
+                }
 
                 //Sets timer amount and starts it(currently 10 seconds)
                 PauseTimerOn = true;
