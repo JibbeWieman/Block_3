@@ -67,6 +67,7 @@ public class Interact : MonoBehaviour
     [SerializeField] int AgroDistance;
     [SerializeField] bool CameraObject = false;
     [SerializeField] string objectString;
+    [SerializeField] GameObject Sparkles;
 
     // Event delegate for interaction event
     public delegate void InteractionEventHandler(Transform target);
@@ -82,6 +83,7 @@ public class Interact : MonoBehaviour
     {
         inReach = false;
         targetTimePause += targetTimePauseStart;
+        Sparkles.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -112,14 +114,14 @@ public class Interact : MonoBehaviour
             GUI.Label(new Rect(50, 50, 400, 200), "Time Frozen " + targetTimePauseString, headStyle);
         }
 
-        if (inReach == true)
+        if (inReach == true && AmountCanInteract > 0)
         {
-            GUI.Box(new Rect(Screen.width / 2, (Screen.height /3)*2, Screen.width/3, Screen.height/2), "Press | E | to interact", headStyle);
+            GUI.Box(new Rect(550, 550, Screen.width/3, Screen.height/2), "Press | E | to interact", headStyle);
         }
 
-        if(targetTimePause/2 > 5)
+        if(targetTimePause > 8 && targetTimePause < 10)
         {
-            GUI.Label(new Rect(Screen.width / 2, 300, 400, 200), objectString, headStyle);
+            GUI.Label(new Rect(550, 600, 400, 200), objectString, headStyle);
         }
     }
 
@@ -153,6 +155,8 @@ public class Interact : MonoBehaviour
 
                 //Can interact with it one less time
                 --AmountCanInteract;
+
+                Sparkles.SetActive(false);
             }
 
         }
