@@ -111,7 +111,7 @@ public class Interact : MonoBehaviour
         {
             int targetTimePauseInt = (int)targetTimePause;
             var targetTimePauseString = targetTimePauseInt.ToString();
-            GUI.Label(new Rect(50, 50, 400, 200), "Time Frozen " + targetTimePauseString, headStyle);
+            GUI.Label(new Rect(50, 50, 400, 200), "Landlord Frozen for: " + targetTimePauseString, headStyle);
         }
 
         if (inReach == true && AmountCanInteract > 0)
@@ -119,7 +119,7 @@ public class Interact : MonoBehaviour
             GUI.Box(new Rect(550, 550, Screen.width/3, Screen.height/2), "Press | E | to interact", headStyle);
         }
 
-        if(targetTimePause > 8 && targetTimePause < 10)
+        if(targetTimePause > 7 && targetTimePause < 10)
         {
             GUI.Label(new Rect(550, 600, 400, 200), objectString, headStyle);
         }
