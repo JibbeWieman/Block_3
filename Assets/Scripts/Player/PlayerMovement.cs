@@ -6,8 +6,9 @@ public class PlayerMovement : MonoBehaviour
 {
     public CharacterController Controller;
 
-    public float speed = 12f;
-    public float gravity = -9.81f;
+    [SerializeField] private float speed = 12f;
+    [SerializeField] private float gravity = -9.81f;
+    [SerializeField] private float jumpHeight = 3f;
     public bool isSneaking = false;
 
     public Transform groundCheck;
@@ -18,8 +19,7 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
 
     // Sneak Variables
-    public CharacterController PlayerHeight;
-    public float normalHeight, sneakHeight;
+    [SerializeField] private float normalHeight, sneakHeight;
     private float normalSpeed;
     private float sneakSpeed;
 
@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         Controller = GetComponent<CharacterController>();
         normalSpeed = speed;
         sneakSpeed = normalSpeed / 2;
+        normalHeight = Controller.height;
     }
 
     // Update is called once per frame
@@ -45,13 +46,13 @@ public class PlayerMovement : MonoBehaviour
         // Sneak Mechanic
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            PlayerHeight.height = sneakHeight;
+            Controller.height = sneakHeight;
             speed = sneakSpeed;
             isSneaking = true;
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            PlayerHeight.height = normalHeight;
+            Controller.height = normalHeight;
             speed = normalSpeed;
             isSneaking = false;
         }
@@ -59,6 +60,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         Controller.Move(speed * Time.deltaTime * move);
+
+        if(Input.GetButtonDown("Jump") && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
 
         velocity.y += gravity * Time.deltaTime;
 

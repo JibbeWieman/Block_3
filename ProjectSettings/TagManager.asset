@@ -3,18 +3,24 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PatrolPoint
+  - InteractedObject
+  - Landlord
+  - Reach
+  - block
+  - door
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - PostProccessing
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - Ground
   - 
   - 
   - 

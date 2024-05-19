@@ -16,20 +16,13 @@ public class LifeCount : MonoBehaviour
 
     public void LoseLife()
     {
-        if (livesRemaining == 0)
-            return;
+        if (livesRemaining == 0) return;
 
         livesRemaining--;
 
         if (livesRemaining >= 0 && livesRemaining < lives.Length)
         {
             lives[livesRemaining].enabled = false;
-        }
-
-        // probably don't need this
-        if (livesRemaining == 0)
-        {
-            Debug.Log("You Lost");
         }
     }
 
