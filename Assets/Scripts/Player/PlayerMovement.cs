@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
 
     // Sneak Variables
-    [SerializeField] private float normalHeight, sneakHeight;
+    private float normalHeight, sneakHeight;
     private float normalSpeed;
     private float sneakSpeed;
 
@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         normalSpeed = speed;
         sneakSpeed = normalSpeed / 2;
         normalHeight = Controller.height;
+        sneakHeight = normalHeight / 2;
     }
 
     // Update is called once per frame
