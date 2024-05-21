@@ -20,7 +20,7 @@ public class TakeDamage : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.B))
+        if (Input.GetKey(KeyCode.B))
         {
             gotHurt();
         }
@@ -29,12 +29,7 @@ public class TakeDamage : MonoBehaviour
     void gotHurt()
     {
         Debug.Log("Player hit.");
-        if(LostLife == null)
-        {
-            Debug.LogError("LostLife GameObject is not assigned.");
-            return;
-        }
-
+        
         var color = LostLife.GetComponent<Image>().color;
         color.a = 0.8f;
         color = color;
@@ -47,11 +42,6 @@ public class TakeDamage : MonoBehaviour
     IEnumerator FadeOutAlpha()
     {
         var imageComponent = LostLife.GetComponent<Image>();
-        if (imageComponent == null)
-        {
-            Debug.LogError("LostLife GameObject does not have an Image component.");
-            yield break;
-        }
 
         var color = imageComponent.color;
         color.a = 0.8f;
