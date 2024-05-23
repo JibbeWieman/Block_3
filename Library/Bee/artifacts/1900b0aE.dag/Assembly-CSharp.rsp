@@ -415,11 +415,10 @@
 "Assets/Scripts/Player/Interact/InteractDestroy.cs"
 "Assets/Scripts/Player/Interact/UIAnnoyCounter.cs"
 "Assets/Scripts/Player/LifeCount.cs"
-"Assets/Scripts/Player/MouseLook.cs"
 "Assets/Scripts/Player/PlayerHealth.cs"
-"Assets/Scripts/Player/PlayerMovement.cs"
 "Assets/Scripts/Player/Rotator.cs"
 "Assets/Scripts/Player/TakingPictures.cs"
+"Assets/Scripts/PlayerMovement.cs"
 "Assets/TakeDamage.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
