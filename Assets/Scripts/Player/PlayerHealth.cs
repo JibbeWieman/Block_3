@@ -4,35 +4,9 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    /*public int maxHealth = 100;
-    public int currentHealth;
-
-    private void Start()
-    {
-        currentHealth = maxHealth;
-    }
-
-    public void TakeDamage(int damageAmount)
-    {
-        currentHealth -= damageAmount;
-
-        
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-    }
-
-    void Die()
-    {
-        
-        Debug.Log("Player died!");
-        
-    }*/
-
-  
     public int maxStrikes = 3;
     public int currentStrikes;
+    public static bool isDead;
 
     public GameObject gameOverPanel;
     public GameObject player;
@@ -40,6 +14,7 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         gameOverPanel.SetActive(false);
+        isDead = false;
         currentStrikes = 0;
     }
 
@@ -55,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             gameOverPanel.SetActive(true);
+            isDead = true;
         }
 
         

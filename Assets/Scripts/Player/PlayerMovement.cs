@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
     // Reference to the player's camera
-    public Camera playerCamera;
+    public GameObject playerCamera;
+    public GameObject rcCamera;
 
     // Movement speeds
     public float walkSpeed = 12f;
@@ -14,43 +14,75 @@ public class PlayerMovement : MonoBehaviour
 
     // Jumping parameters
     public float jumpPower = 7f;
+    private bool isJumping = false;
     public float gravity = -9.81f;
 
     // Look sensitivity
-    public float lookSpeedX = 2f;
-    public float lookSpeedY = 2f;
-    public float lookXLimit = 45f;
+    static public float lookSpeedX = 2f;
+    static public float lookSpeedY = 2f;
+    public float lookXLimit = 75f;
 
     // Height parameters
     public float normalHeight, crouchHeight;
-
+    
     // Private variables for movement
     private Vector3 moveDirection = Vector3.zero;
     private float rotationX = 0;
     private CharacterController characterController;
-    private bool canMove = true;
 
-    // Static movement variables
+    // Static variables
     static bool isCrouching = false;
+    static public bool canMove = true;
+
+    //RC variables
+    public GameObject rcBatteryUI;
 
     void Start()
     {
         // Get reference to CharacterController component
         characterController = GetComponent<CharacterController>();
 
-        // Lock cursor and show it
-        //Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = true; // Set to true to always show the cursor
-
         // Set variables
         crouchSpeed = walkSpeed / 2;
         normalSpeed = walkSpeed;
         normalHeight = characterController.height;
-        crouchHeight = normalHeight / 2;
+        crouchHeight = normalHeight/2;
     }
 
     void Update()
     {
+        #region RC Code
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RCmovement.rcActivated = !RCmovement.rcActivated;
+        }
+
+        if (RCmovement.rcActivated)
+        {
+            rcBatteryUI.SetActive(true);
+            rcCamera.SetActive(true);
+            playerCamera.SetActive(false);
+
+        } else
+        {
+            rcBatteryUI.SetActive(false);
+            rcCamera.SetActive(false);
+            playerCamera.SetActive(true);
+        }
+
+        #endregion
+
+        #region canMove Code
+        if (PlayerHealth.isDead || PauseMenu.GameIsPaused || RCmovement.rcActivated)
+        {
+            canMove = false;
+        }
+        else
+        {
+            canMove = true;
+        }
+        #endregion
+
         // Get the direction of movement based on player's input
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
@@ -65,8 +97,8 @@ public class PlayerMovement : MonoBehaviour
         // Combine the movement directions
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
 
-        // Handle jumping
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
+        #region Handle jumping
+        if (Input.GetButton("Jump") && canMove && characterController.isGrounded && !isCrouching)
         {
             moveDirection.y = jumpPower;
         }
@@ -74,15 +106,21 @@ public class PlayerMovement : MonoBehaviour
         {
             moveDirection.y = movementDirectionY;
         }
+        #endregion
 
         // Apply gravity
         if (!characterController.isGrounded)
         {
             moveDirection.y += gravity * Time.deltaTime;
+            isJumping = true;
         }
+        else 
+        {
+            isJumping = false;
+        } 
 
-        // Handle crouching
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canMove)
+        #region Handle crouching
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canMove && !isJumping)
         {
             characterController.height = crouchHeight;
             walkSpeed = crouchSpeed;
@@ -94,11 +132,12 @@ public class PlayerMovement : MonoBehaviour
             walkSpeed = normalSpeed;
             isCrouching = false;
         }
+        #endregion
 
         // Move the player
         characterController.Move(moveDirection * Time.deltaTime);
 
-        // Handle player rotation
+        #region Handle player rotation
         if (canMove)
         {
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeedX;
@@ -106,5 +145,6 @@ public class PlayerMovement : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeedY, 0);
         }
+        #endregion
     }
 }
