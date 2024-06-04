@@ -103,6 +103,7 @@ public class GuardBT : BehaviorTree.Tree
     {
         // Subscribe to the interaction event
         Interact.OnInteract += HandleInteractEvent;
+        TakingPictures.OnInteract += HandleInteractEvent;
 
         Node root = new Selector(new List<Node>
         {

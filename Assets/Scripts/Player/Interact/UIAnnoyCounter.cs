@@ -18,7 +18,7 @@ public class UIAnnoyCounter : MonoBehaviour
     void FixedUpdate()
     {
         Interact.OnInteractCountAnoy += HandleInteractCountAnoyEvent;
-        Interact.OnInteractCountCamera += HandleInteractCountCameraEvent;
+        TakingPictures.CountUp += NewPhotoEventHandler;
     }
 
     void OnGUI()
@@ -65,7 +65,7 @@ public class UIAnnoyCounter : MonoBehaviour
         }
     }
 
-    private void HandleInteractCountCameraEvent(int CountTotal)
+    private void NewPhotoEventHandler(int CountTotal)
     {
         if (CountSwitch == true)
         {

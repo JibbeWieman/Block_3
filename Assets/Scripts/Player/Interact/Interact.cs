@@ -76,9 +76,6 @@ public class Interact : MonoBehaviour
     public delegate void InteractAnoyEventHandler(int Count);
     public static event InteractAnoyEventHandler OnInteractCountAnoy;
 
-    public delegate void InteractCameraEventHandler(int Count);
-    public static event InteractCameraEventHandler OnInteractCountCamera;
-
     void Start()
     {
         inReach = false;
@@ -116,7 +113,14 @@ public class Interact : MonoBehaviour
 
         if (inReach == true && AmountCanInteract > 0)
         {
-            GUI.Box(new Rect(550, 550, Screen.width/3, Screen.height/2), "Press | E | to interact", headStyle);
+            if(CameraObject == true)
+            {
+                GUI.Box(new Rect(550, 550, Screen.width / 3, Screen.height / 2), "Press | P | to take Photo", headStyle);
+            }
+            else
+            {
+                GUI.Box(new Rect(550, 550, Screen.width / 3, Screen.height / 2), "Press | E | to interact", headStyle);
+            }
         }
 
         if(targetTimePause > 7 && targetTimePause < 10)
@@ -131,35 +135,35 @@ public class Interact : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Transform playerTransform = player.transform;
 
-        if (inReach && Input.GetButtonDown("Interact") && AmountCanInteract > 0 && PauseTimerOn == false)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (CameraObject == false)
             {
-                gameObject.GetComponent<Renderer>().material.color = new Color(0, 0, 300, 1);
-
-                // Notify AI that interaction occurred with the player's transform
-                OnInteract?.Invoke(playerTransform);
-                UIAnnoyCounter.CountSwitch = true;
-
-                if(CameraObject == false)
+                if (inReach && Input.GetButtonDown("Interact") && AmountCanInteract > 0 && PauseTimerOn == false)
                 {
-                    OnInteractCountAnoy?.Invoke(1);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        gameObject.GetComponent<Renderer>().material.color = new Color(0, 0, 300, 1);
+
+                        // Notify AI that interaction occurred with the player's transform
+                        OnInteract?.Invoke(playerTransform);
+                        UIAnnoyCounter.CountSwitch = true;
+
+                        //Sets timer amount and starts it(currently 10 seconds)
+                        PauseTimerOn = true;
+
+                        //Can interact with it one less time
+                        --AmountCanInteract;
+
+                        Sparkles.SetActive(false);
+
+                        OnInteractCountAnoy?.Invoke(1);
+                    }
                 }
-                else
-                {
-                    OnInteractCountCamera?.Invoke(1);
-                }
-
-                //Sets timer amount and starts it(currently 10 seconds)
-                PauseTimerOn = true;
-
-                //Can interact with it one less time
-                --AmountCanInteract;
-
-                Sparkles.SetActive(false);
             }
+            else
+            {
 
-        }
+            }
+      
 
         if (PauseTimerOn == true)
         {

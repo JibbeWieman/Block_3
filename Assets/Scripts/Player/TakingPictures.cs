@@ -16,6 +16,16 @@ public class TakingPictures : MonoBehaviour
     private bool isAlreadyTakingPicture;
     private List<Texture2D> capturedPictures = new List<Texture2D>();  // List to store captured pictures
 
+
+    public delegate void NewPhotoEventHandler(int Count);
+    public static event NewPhotoEventHandler CountUp;
+    float targetTimePauseStart = 10.0f;
+    float targetTimePause;
+    [SerializeField] bool PauseTimerOn = false;
+    public delegate void InteractionEventHandler(Transform target);
+    public static event InteractionEventHandler OnInteract;
+    bool visible = false;
+
     private void Start()
     {
         checkVisible = playerCam.GetComponent<CheckVisible>();
@@ -26,6 +36,9 @@ public class TakingPictures : MonoBehaviour
         {
             image.texture = null;
         }
+
+
+        targetTimePause = targetTimePauseStart;
     }
 
     void Update()
@@ -49,9 +62,33 @@ public class TakingPictures : MonoBehaviour
                 }
             }
         }
+
+        if (PauseTimerOn == true)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            Transform playerTransform = player.transform;
+
+            targetTimePause -= Time.deltaTime;
+
+            OnInteract?.Invoke(playerTransform);
+
+            if (targetTimePause <= 0.0f)
+            {
+                GameObject block = GameObject.FindGameObjectWithTag("block");
+                Transform blockTransform = block.transform;
+                OnInteract?.Invoke(blockTransform);
+                targetTimePause = targetTimePauseStart;
+                PauseTimerOn = false;
+            }
+        }
     }
-    private void TakePicture()
+
+private void TakePicture()
     {
+        UIAnnoyCounter.CountSwitch = true;
+        CountUp?.Invoke(1);
+        PauseTimerOn = true;
+
         isAlreadyTakingPicture = true;
 
         // Capture the entire screen
