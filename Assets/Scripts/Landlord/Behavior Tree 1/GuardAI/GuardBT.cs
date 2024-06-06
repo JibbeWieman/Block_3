@@ -99,6 +99,8 @@ public class GuardBT : BehaviorTree.Tree
 
     private bool playerInteracted = false;
 
+    Animator animator;
+    
     protected override Node SetupTree()
     {
         // Subscribe to the interaction event
@@ -114,7 +116,7 @@ public class GuardBT : BehaviorTree.Tree
                 new TaskGoToTarget(transform), 
             }),
             // Continue patrolling if no interaction occurred
-            new TaskPatrol(transform, waypoints),
+            new TaskPatrol(transform, waypoints, GetComponent<Animator>()),
         });
         
         return root;

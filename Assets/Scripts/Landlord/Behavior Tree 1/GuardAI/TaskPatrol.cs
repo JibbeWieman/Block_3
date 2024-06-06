@@ -24,10 +24,13 @@ public class TaskPatrol : Node
 
     private bool _isMovingForward = true;
 
-    public TaskPatrol(Transform transform, Transform[] waypoints)
+    Animator _animator;
+
+    public TaskPatrol(Transform transform, Transform[] waypoints, Animator animator)
     {
         _transform = transform;
         _waypoints = waypoints;
+        _animator = animator;
     }
 
     public override NodeState Evaluate()
@@ -151,6 +154,8 @@ public class TaskPatrol : Node
             {
                 // Start waiting
                 _waiting = true;
+                // Set animation to idle
+                _animator.SetInteger("State", 2);
                 _waitCounter = 0f;
                 state = NodeState.RUNNING;
                 return state;
@@ -176,6 +181,15 @@ public class TaskPatrol : Node
             if (_waitCounter >= _waitTime)
             {
                 _waiting = false; // Stop waiting
+                // Set animation back to walking or stair climbing based on where it was before
+                if (_animator.GetBool("isWalking"))
+                {
+                    _animator.SetInteger("State", 0);
+                }
+                else
+                {
+                    _animator.SetInteger("State", 1);
+                }
                 _waitCounter = 0f; // Reset wait counter
             }
         }
