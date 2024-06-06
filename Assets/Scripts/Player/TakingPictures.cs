@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ public class TakingPictures : MonoBehaviour
     public RawImage screenshotRI;
     public List<RawImage> inventoryImages;  // List of RawImage components for the inventory
     public RenderTexture render;
+    public Text evidenceCollectedText; // Reference to the Text component for the message
 
     [SerializeField] Camera playerCam;
     private CheckVisible checkVisible;
@@ -36,7 +38,8 @@ public class TakingPictures : MonoBehaviour
         {
             image.texture = null;
         }
-
+        // Ensure the evidence collected text is initially empty or disabled
+        evidenceCollectedText.gameObject.SetActive(false);
 
         targetTimePause = targetTimePauseStart;
     }
@@ -83,7 +86,7 @@ public class TakingPictures : MonoBehaviour
         }
     }
 
-private void TakePicture()
+    private void TakePicture()
     {
         UIAnnoyCounter.CountSwitch = true;
         CountUp?.Invoke(1);
@@ -129,4 +132,17 @@ private void TakePicture()
             }
         }
     }
+    private IEnumerator ShowEvidenceCollectedMessage()
+    {
+        // Show the message
+        evidenceCollectedText.text = "Evidence is collected";
+        evidenceCollectedText.gameObject.SetActive(true);
+
+        // Wait for 2 seconds
+        yield return new WaitForSeconds(2f);
+
+        // Hide the message
+        evidenceCollectedText.gameObject.SetActive(false);
+    }
 }
+

@@ -1,55 +1,3 @@
-/*using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Interact : MonoBehaviour
-{
-
-    [SerializeField] private bool inReach;
-
-    [SerializeField] GameObject text;
-    [SerializeField] GameObject canvas;
-
-    void Start()
-    {
-        inReach = false;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Reach")
-        {
-            inReach = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Reach")
-        {
-            inReach = false;
-        }
-    }
-
-
-    void Update()
-    {
-        if (inReach && Input.GetButtonDown("Interact"))
-        {
-
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-
-                /*Ray ray = new Ray(transform.position, transform.forward);
-                 if(Physics.Raycast(ray, out RaycastHit hitInfo, number))
-                 {*/
-                /* Instantiate(text, canvas.transform);
-                 gameObject.GetComponent<Renderer>().material.color = new Color(0, 0, 300, 1);
-                }
-                }
-                }
-                }*/
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -80,7 +28,10 @@ public class Interact : MonoBehaviour
     {
         inReach = false;
         targetTimePause += targetTimePauseStart;
-        Sparkles.SetActive(true);
+        if (Sparkles != null)
+        {
+            Sparkles.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -113,7 +64,7 @@ public class Interact : MonoBehaviour
 
         if (inReach == true && AmountCanInteract > 0)
         {
-            if(CameraObject == true)
+            if (CameraObject == true)
             {
                 GUI.Box(new Rect(550, 550, Screen.width / 3, Screen.height / 2), "Press | P | to take Photo", headStyle);
             }
@@ -123,7 +74,7 @@ public class Interact : MonoBehaviour
             }
         }
 
-        if(targetTimePause > 7 && targetTimePause < 10)
+        if (targetTimePause > 7 && targetTimePause < 10)
         {
             GUI.Label(new Rect(550, 600, 400, 200), objectString, headStyle);
         }
@@ -135,39 +86,42 @@ public class Interact : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Transform playerTransform = player.transform;
 
-            if (CameraObject == false)
+        if (CameraObject == false)
+        {
+            if (inReach && Input.GetButtonDown("Interact") && AmountCanInteract > 0 && PauseTimerOn == false)
             {
-                if (inReach && Input.GetButtonDown("Interact") && AmountCanInteract > 0 && PauseTimerOn == false)
+                if (Input.GetKeyDown(KeyCode.E))
                 {
-                    if (Input.GetKeyDown(KeyCode.E))
+                    gameObject.GetComponent<Renderer>().material.color = new Color(0, 0, 300, 1);
+
+                    // Notify AI that interaction occurred with the player's transform
+                    OnInteract?.Invoke(playerTransform);
+                    UIAnnoyCounter.CountSwitch = true;
+
+                    //Sets timer amount and starts it(currently 10 seconds)
+                    PauseTimerOn = true;
+
+                    //Can interact with it one less time
+                    --AmountCanInteract;
+
+                    if (Sparkles != null)
                     {
-                        gameObject.GetComponent<Renderer>().material.color = new Color(0, 0, 300, 1);
-
-                        // Notify AI that interaction occurred with the player's transform
-                        OnInteract?.Invoke(playerTransform);
-                        UIAnnoyCounter.CountSwitch = true;
-
-                        //Sets timer amount and starts it(currently 10 seconds)
-                        PauseTimerOn = true;
-
-                        //Can interact with it one less time
-                        --AmountCanInteract;
-
                         Sparkles.SetActive(false);
-
-                        OnInteractCountAnoy?.Invoke(1);
                     }
+
+                    OnInteractCountAnoy?.Invoke(1);
                 }
             }
-            else
-            {
+        }
+        else
+        {
 
-            }
-      
+        }
+
 
         if (PauseTimerOn == true)
         {
-            if(CameraObject == false)
+            if (CameraObject == false)
             {
                 targetTimePause -= Time.deltaTime;
 
@@ -211,7 +165,7 @@ public class Interact : MonoBehaviour
                     PauseTimerOn = false;
                 }
             }
-            
+
         }
     }
 }

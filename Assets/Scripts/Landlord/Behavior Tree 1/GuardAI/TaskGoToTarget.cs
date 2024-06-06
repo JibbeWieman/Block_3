@@ -86,7 +86,7 @@ public class TaskGoToTarget : Node
             _transform.rotation = Quaternion.RotateTowards(_transform.rotation, targetRotation, step * 100);
 
             Debug.Log("Node state: " + state);*/
-            
+
             float distanceToTarget = Vector3.Distance(_transform.position, _target.position);
 
             if (distanceToTarget <= _distanceThreshold)

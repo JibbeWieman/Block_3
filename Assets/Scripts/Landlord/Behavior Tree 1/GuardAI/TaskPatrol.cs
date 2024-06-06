@@ -179,7 +179,7 @@ public class TaskPatrol : Node
                 _waitCounter = 0f; // Reset wait counter
             }
         }
-    
+
 
         state = NodeState.RUNNING;
         return state;
@@ -216,3 +216,4 @@ public class TaskPatrol : Node
         return closestIndex;
     }*/
 }
+
