@@ -16,6 +16,10 @@ public class Interact : MonoBehaviour
     [SerializeField] bool CameraObject = false;
     [SerializeField] string objectString;
     [SerializeField] GameObject Sparkles;
+    [SerializeField] Animator Animator;
+
+    Animator _animator;
+
 
     // Event delegate for interaction event
     public delegate void InteractionEventHandler(Transform target);
@@ -104,6 +108,8 @@ public class Interact : MonoBehaviour
                     //Can interact with it one less time
                     --AmountCanInteract;
 
+                    Animator.SetInteger("State", 2);
+
                     if (Sparkles != null)
                     {
                         Sparkles.SetActive(false);
@@ -134,11 +140,15 @@ public class Interact : MonoBehaviour
                               Mathf.Pow((Landlord.transform.position.z - player.transform.position.z), 2)) < AgroDistance)
                 {
                     OnInteract?.Invoke(playerTransform);
+                    GuardBT.speed = 5f;
+                    Animator.SetInteger("State", 0);
                 }
                 //else the landlord stays in place(for as long as the timer is active(up to 10s))
                 else
                 {
                     OnInteract?.Invoke(LandlordTransform);
+                    GuardBT.speed = 0f;
+                    Animator.SetInteger("State", 2);
                 }
 
                 if (targetTimePause <= 0.0f)
@@ -146,6 +156,8 @@ public class Interact : MonoBehaviour
                     GameObject block = GameObject.FindGameObjectWithTag("block");
                     Transform blockTransform = block.transform;
                     OnInteract?.Invoke(blockTransform);
+                    GuardBT.speed = 5f;
+                    Animator.SetInteger("State", 0);
                     targetTimePause = targetTimePauseStart;
                     PauseTimerOn = false;
                 }
